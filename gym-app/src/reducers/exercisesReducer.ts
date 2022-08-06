@@ -5,14 +5,7 @@ import {useDispatch} from 'react-redux';
 import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import {RootState} from '../store';
-interface exerciseState {
-    bodyPart: string,
-    equipment: string,
-    gifUrl: string,
-    id: string,
-    name: string,
-    target: string
-}
+import {exerciseState} from '../types';
 const initialState: exerciseState[] = [];
 const exerciseSlice = createSlice({
     name: 'exercises',
@@ -36,6 +29,18 @@ export const searchExercises = (value : string): ThunkAction< void, RootState, u
             dispatch(clearSearchValue(''))
             dispatch(setExercises(searchedExercises));
         } 
+    }
+}
+export const searchByBodyPart = (value: string): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async dispatch => {
+        let exercisesData = [];
+        if(value === 'all'){
+            exercisesData = await exerciseService.fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseService.exerciseOptions);
+        }
+        else{
+            exercisesData = await exerciseService.fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${value}`, exerciseService.exerciseOptions);
+        }
+        dispatch(setExercises(exercisesData));
     }
 }
 

@@ -34,24 +34,11 @@ const SearchExercises = ({bodyPart} : {bodyPart: string}) => {
         },
 
     }
-    //const dispatch = useDispatch();
-    //const searchValue = useSelector((state: string) => state.search);
     const searchValue = useAppSelector(state => state.search);
     const dispatch = useAppDispatch();
-    
     const handleSearch = async () => {
         if(searchValue.length !== 0)
-        {
            dispatch(searchExercises(searchValue));
-        }
-        /*if(searchValue.length !== 0 ){
-            const exercisesData = await exerciseService.fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseService.exerciseOptions)
-            const searchedExercises = exercisesData.filter((exercise: any) => exercise.name.toLowerCase().includes(searchValue)
-            || exercise.target.toLowerCase().includes(searchValue)
-            || exercise.equipment.toLowerCase().includes(searchValue)
-            || exercise.bodyPart.toLowerCase().includes(searchValue)
-            )
-        } */
     }
     useEffect(() => {
         dispatch(initializeBodyParts())
@@ -81,9 +68,8 @@ const SearchExercises = ({bodyPart} : {bodyPart: string}) => {
             </Button>
         </Box>
         <Box sx={{position: 'relative', width: '100%', p: '20px'}}>
-           <HorizontalScrollbar bodyPart={bodyPart}/> 
+           <HorizontalScrollbar bodyPart={bodyPart} /> 
         </Box>
-            
         </Stack>
     )
 };
