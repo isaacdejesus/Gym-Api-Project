@@ -8,7 +8,7 @@ import HorizontalScrollbar from './HorizontalScrollbar'
 const SearchExercises = ({bodyPart} : {bodyPart: string}) => {
     const styles = {
         topTypographyStyle: {
-        fontSize: { lg: '44px', xs: '30px'}
+        fontSize: { lg: '34px', xs: '20px'}
         },
         searchTextfieldStyle: {
             input: {
@@ -23,7 +23,7 @@ const SearchExercises = ({bodyPart} : {bodyPart: string}) => {
             borderRadius: '40px'
         },
         buttonStyling: {
-            bgcolor: '#FF2625',
+            bgcolor: '#42a5f5',
             color: "#fff",
             textTransform: 'none',
             width: { lg: "175px", xs: '80px' },
@@ -49,15 +49,15 @@ const SearchExercises = ({bodyPart} : {bodyPart: string}) => {
         <Typography 
             fontWeight={700} sx= {styles.topTypographyStyle}
             mb="50px" textAlign="center">
-            Exercises you <br />
-            should know
+            SEARCH BY BODY PART <br />
+            OR EQUIPMENT
         </Typography>
         <Box position="relative" mb="72px">
             <TextField 
                 sx={styles.searchTextfieldStyle}
                 value={searchValue}
                 onChange={(e) => dispatch(setSearchValue(e.target.value.toLowerCase()))}
-                placeholder="Search Exercises"
+                placeholder="Search..."
                 type="text"
             />
             <Button className='search-btn'

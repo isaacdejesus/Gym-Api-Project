@@ -21,3 +21,7 @@ export interface video {
     }
 }
 
+export interface BPart {
+    name: string,
+    icon: any
+};

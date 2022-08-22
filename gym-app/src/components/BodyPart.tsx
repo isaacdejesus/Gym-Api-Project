@@ -2,11 +2,13 @@ import { Stack, Typography } from '@mui/material';
 import Icon from '../assets/icons/gym.png';
 import {useAppDispatch} from '../hooks';
 import {setBodyPartValue} from '../reducers/bodyPartReducer';
-const BodyPart = ({item, bodyPart}: {item: string, bodyPart: string}) => {
+import {BPart} from '../types';
+import someIcon from '../assets/exerciseIcons/cardio.png';
+const BodyPart = ({item, bodyPart}: {item: BPart, bodyPart: string}) => {
     const styles = {
         borderStyle: {
-            borderTop: bodyPart === item ? '4px solid #ff2625' : '',
-            backgroundColor: '#fff',
+            borderTop: bodyPart === item.name ? '4px solid #42a5f5' : '',
+            backgroundColor: '#e3f2fd',
             borderBottomLeftRadius: '20px',
             width: '270px',
             height: '280px',
@@ -22,17 +24,17 @@ const BodyPart = ({item, bodyPart}: {item: string, bodyPart: string}) => {
             justifyContent="center"
             className="bodyPart-card"
         onClick={() => {
-           dispatch(setBodyPartValue(item));
+           dispatch(setBodyPartValue(item.name));
             window.scrollTo({top: 1800, left: 100, behavior: 'smooth'})
         }}
         >
-        <img src={Icon} alt="dumbbell" style={{width: '40px', height: '40px'}} />
+        <img src={item.icon} alt="dumbbell" style={{width: '40px', height: '40px'}} />
         <Typography fontSize="24px" 
             fontWeight="bold"
             color="#3A1212"
             textTransform="capitalize"
         >
-            {item}
+            {item.name}
         </Typography>
         </Stack>
     )

@@ -26,6 +26,7 @@ export const searchExercises = (value : string): ThunkAction< void, RootState, u
             || exercise.equipment.toLowerCase().includes(value)
             || exercise.bodyPart.toLowerCase().includes(value)
             )
+            window.scrollTo({top: 1800, left:100, behavior: 'smooth'});
             dispatch(clearSearchValue(''))
             dispatch(setExercises(searchedExercises));
         } 
